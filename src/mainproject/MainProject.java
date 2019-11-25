@@ -20,7 +20,7 @@ public class MainProject {
     public static void main(String[] args) {
 
         
-        EmployeeRepo repo = new EmployeeRepo ();
+        EmployeeRepo repo = new EmployeeRepo();
         
         Scanner scaner = new Scanner(System.in);
         
@@ -50,6 +50,4 @@ public class MainProject {
 //            employee.print();
 //        }
     }
-
-as
 }
