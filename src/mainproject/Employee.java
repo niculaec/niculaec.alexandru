@@ -2,7 +2,7 @@
 package mainproject;
 
 
-public class Employee {
+public abstract class Employee {
     public int ID;
     public String Title;
     public String FirstName;
@@ -23,32 +23,7 @@ public class Employee {
         this.JobT=jobtitle;
         this.Department=department;
     }
-    
-    public static Employee newEmplayee(int Id,String title, String firstname, String lastname, String dateofbirth,String nino,String jobtitle,String department) {
-        
-        if(title == null || title.isEmpty()){
-        return null;//if user left empty the code will be stopt.
-        }
-        if(firstname == null || firstname.isEmpty()){
-        return null;//if user left empty the code will be stopt.
-        }
-        if(lastname == null || lastname.isEmpty()){
-        return null;//if user left empty the code will be stopt.
-        }
-        if(nino == null || nino.isEmpty()){
-        return null;//if user left empty the code will be stopt.
-        }
-        if(dateofbirth == null || dateofbirth.isEmpty()){
-        return null;//if user left empty the code will be stopt.
-        }
-        if(Id == 0){
-            return null;//if user left empty the code will be stopt.
-        
-        }
-  
-        
-        return new Employee(Id, title, firstname, lastname, dateofbirth, nino, jobtitle, department);
-    }
+   
     
     public int getid()
     {
