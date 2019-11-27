@@ -21,7 +21,7 @@ public abstract class Employee {
         this.DateOfBirth=dateofbirth;
         this.NINO=nino;
         this.JobT=jobtitle;
-        this.Department=department;
+        this.Department=department;//depertment job
     }
    
     
