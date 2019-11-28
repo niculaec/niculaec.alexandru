@@ -68,9 +68,15 @@ public class MainProject {
     
     public static void Menu()
     {
+        System.out.println("----------------------");
+        System.out.println("- Payroll Aplication -");
+        System.out.println("----------------------");
         System.out.println("1. Add Employee: " );
         System.out.println("2. View Employee: " );
         System.out.println("3. Remove Employee: ");
+        System.out.println("4. Generate Pay Slip:");
+        System.out.println("5. Exit:");
+        System.out.println("Please select an Option");
     }
     
     
