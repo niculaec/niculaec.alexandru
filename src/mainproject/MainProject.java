@@ -12,15 +12,48 @@ public class MainProject {
         System.out.println("B.Hourly: " );
         System.out.println("C.CommissionEarner: ");
         System.out.println("D.Back:");
-        
+        int id;
+        String title;
+        String firstname;
+        String lastname;
+        String dateofbirth;
+        String nino;
+        String jobtitle;
+        String department;
         String input = scanner.nextLine();
-        
+        double wageearner;
+        double commision;
+        double hourly;
+        String employeeType;
         input = input.toUpperCase();//Convert any letter in Upper case letter
        
         short selectedType;// short 16 bit number 
         switch(input){
-            case"A": 
+            case"A": //instructiune
                 selectedType = 0;
+                System.out.println("Please enter Employee ID:");
+                id=scanner.nextInt();
+               
+                System.out.println("Please enter Employee Title");
+                title=scanner.nextLine();
+                
+                System.out.println("Please enter First Name");
+                firstname=scanner.nextLine();
+                
+                System.out.println("Please enter Last Name");
+                lastname=scanner.nextLine();
+                
+                System.out.println("Please enter Date Of Birth");
+                dateofbirth=scanner.nextLine();
+                
+                System.out.println("Please enter National insurens Number ");
+                nino=scanner.nextLine();
+                
+                System.out.println("Please enter Employee Job Title ");
+                jobtitle=scanner.nextLine();
+                
+                System.out.println("Please enter Employeee Department ");
+                department=scanner.nextLine();
                 System.out.println("Enter wage value" );
                 break;
             case"B":
