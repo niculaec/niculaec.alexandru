@@ -6,10 +6,12 @@ import java.util.Scanner;
 public class MainProject {
 
     public static void AddEmployeeSubMenu(Scanner scanner)
+    public static void displayAddEmployeeSubMenu(Scanner scanner)//denimirea clasei si denimirea variabilei
     {
         System.out.println("A.WageErner: " );
         System.out.println("B.Hourly: " );
         System.out.println("C.CommissionEarner: ");
+        System.out.println("D.Back:");
         
         String input = scanner.nextLine();
         
