@@ -87,11 +87,11 @@ public abstract class Employee {
     {
         return NINO;
     }
-    public String getJobT()
+    public JobTitle getJobT()
     {
         return JobT;
     }
-    public String getDepartment()
+    public Department getDepartment()
     {
         return Department;
     }

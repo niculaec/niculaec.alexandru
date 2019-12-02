@@ -230,7 +230,8 @@ public class MainProject {
     public static void Menu()
     {
         System.out.println("----------------------");
-        System.out.println("- Payroll Aplication -");
+        System.out.println("- MARLINE PRODUCTION -");
+        System.out.println("-      Payroll       -");
         System.out.println("----------------------");
         System.out.println("1. Add Employee" );
         System.out.println("2. View Employee" );
