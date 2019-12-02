@@ -9,10 +9,10 @@ public abstract class Employee {
     public String LastName;
     public String DateOfBirth;
     public String  NINO;
-    public String JobT;
-    public String Department;
+    public JobTitle JobT;
+    public Department Department;
     
-    Employee(int Id,String title, String firstname, String lastname, String dateofbirth,String nino,String jobtitle,String department)
+    Employee(int Id,String title, String firstname, String lastname, String dateofbirth,String nino,JobTitle jobtitle,Department department)
     {
         this.ID=Id;
         this.Title=title;
@@ -22,6 +22,44 @@ public abstract class Employee {
         this.NINO=nino;
         this.JobT=jobtitle;
         this.Department=department;//depertment job
+    }
+
+    public static boolean validateEmployee(int Id,String title, String firstname, String lastname, String dateofbirth,String nino){
+        if(title == null || title.isEmpty()){
+            return false;//if user left empty the code will be stopt.
+            }
+            if(firstname == null || firstname.isEmpty()){
+            return false;//if user left empty the code will be stopt.
+            }
+            if(lastname == null || lastname.isEmpty()){
+            return false;//if user left empty the code will be stopt.
+            }
+            if(nino == null || nino.isEmpty()){
+            return false;//if user left empty the code will be stopt.
+            }
+            if(dateofbirth == null || dateofbirth.isEmpty()){
+            return false;//if user left empty the code will be stopt.
+            }
+            if(Id == 0){
+                return false;//if user left empty the code will be stopt.
+            }
+
+            return true;
+    }
+
+    public boolean equals(Employee employee){
+
+        if(employee == null){
+            return false;
+        }
+
+        if(this.ID == employee.ID){
+            return true;
+        } else if(this.FirstName.equals(employee.FirstName) && this.LastName.equals(employee.LastName)){
+            return true;
+        }
+
+        return false;
     }
    
     
@@ -58,7 +96,16 @@ public abstract class Employee {
         return Department;
     }
     
-    public void print(){
+    abstract void printExtensionProprieties();
+
+    private void printBaseProprieties(){
+
+        //TODO de completat
         System.out.println("title: " + Title + "\n" + "First name: " + FirstName  );
+    }
+
+    public final void print(){
+        printBaseProprieties();
+        printExtensionProprieties();
     }
 }

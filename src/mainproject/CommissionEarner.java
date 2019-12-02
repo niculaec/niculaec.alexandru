@@ -3,43 +3,34 @@ package mainproject;
 
 public class CommissionEarner extends Employee
     {
-    protected double Comm;
+    protected double commission;
+    private double annualGrossSalary;
     
-    CommissionEarner(int Id, String title, String firstname, String lastname,String dateofbirth,String nino,String Jobtitle,String department,double Commission)
+    private CommissionEarner(int Id, String title, String firstname, String lastname,String dateofbirth,String nino,JobTitle Jobtitle,Department department,double Commission,double annualGrossSalary)
     {
         super(Id,title,firstname,lastname,dateofbirth,nino,Jobtitle,department);
         
-        Comm=Commission;
+        this.commission=Commission;
+        this.annualGrossSalary = annualGrossSalary;
     }
     
     protected double Commissions()
     {
-        return Comm;
+        return commission;
     }
     
-    public static Employee newCommissionEarner(int Id,String title, String firstname, String lastname, String dateofbirth,String nino,String jobtitle,String department, double comission) {
+    @Override
+    void printExtensionProprieties() {
+        System.out.println("Comission: " + commission  + "Annual Gross Salary: " + annualGrossSalary  );
+    }
+
+
+    public static Employee newCommissionEarner(int Id,String title, String firstname, String lastname, String dateofbirth,String nino,JobTitle jobtitle,Department department, double comission, double annualGrossSalary) {
         
-        if(title == null || title.isEmpty()){
-        return null;//if user left empty the code will be stopt.
+        if(!validateEmployee(Id, title, firstname, lastname, dateofbirth, nino)){
+            return null;
         }
-        if(firstname == null || firstname.isEmpty()){
-        return null;//if user left empty the code will be stopt.
-        }
-        if(lastname == null || lastname.isEmpty()){
-        return null;//if user left empty the code will be stopt.
-        }
-        if(nino == null || nino.isEmpty()){
-        return null;//if user left empty the code will be stopt.
-        }
-        if(dateofbirth == null || dateofbirth.isEmpty()){
-        return null;//if user left empty the code will be stopt.
-        }
-        if(Id == 0){
-            return null;//if user left empty the code will be stopt.
         
-        }
-  
-        
-        return new CommissionEarner(Id, title, firstname, lastname, dateofbirth, nino, jobtitle, department, comission );
+        return new CommissionEarner(Id, title, firstname, lastname, dateofbirth, nino, jobtitle, department, comission ,annualGrossSalary);
     }
 }
