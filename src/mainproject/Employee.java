@@ -24,27 +24,48 @@ public abstract class Employee {
         this.Department=department;//depertment job
     }
 
+    private static boolean containsNumbers(String string){
+        for (char character : string.toCharArray()) {
+            try {
+                Double.parseDouble(""+character);
+                return true;
+            } catch (Exception e) {}
+        }
+
+        return false;
+    }
+
     public static boolean validateEmployee(int Id,String title, String firstname, String lastname, String dateofbirth,String nino){
         if(title == null || title.isEmpty()){
             return false;//if user left empty the code will be stopt.
-            }
-            if(firstname == null || firstname.isEmpty()){
+        }
+        if(firstname == null || firstname.isEmpty()){
             return false;//if user left empty the code will be stopt.
+        } else{
+            if(containsNumbers(firstname)){
+                System.out.println("First name can not contain numbers");
+                return false;
             }
-            if(lastname == null || lastname.isEmpty()){
+        }
+        if(lastname == null || lastname.isEmpty()){
             return false;//if user left empty the code will be stopt.
+        } else{
+            if(containsNumbers(lastname)){
+                System.out.println("Last name can not contain numbers");
+                return false;
             }
-            if(nino == null || nino.isEmpty()){
+        }
+        if(nino == null || nino.isEmpty()){
             return false;//if user left empty the code will be stopt.
-            }
-            if(dateofbirth == null || dateofbirth.isEmpty()){
+        }
+        if(dateofbirth == null || dateofbirth.isEmpty()){
             return false;//if user left empty the code will be stopt.
-            }
-            if(Id == 0){
-                return false;//if user left empty the code will be stopt.
-            }
+        }
+        if(Id == 0){
+            return false;//if user left empty the code will be stopt.
+        }
 
-            return true;
+        return true;
     }
 
     public boolean equals(Employee employee){
