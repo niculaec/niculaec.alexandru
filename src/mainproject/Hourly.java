@@ -18,8 +18,8 @@ public class Hourly extends Employee
     }
 
     @Override
-    void printExtensionProprieties() {
-        System.out.println("HourPay: " + Hpay );
+    String extensionProprietiesToString() {
+       return "HourPay: " + Hpay;
     }
 
 

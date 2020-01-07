@@ -29,7 +29,6 @@ public class MainProject {
         double annualGrossSalary = 0;
 
         double hourly = 0;
-
  
         input = input.toUpperCase();//Convert any letter in Upper case letter
        
@@ -119,7 +118,7 @@ public class MainProject {
             intInput = scanner.nextInt();
         }
         
-        jobtitle= JobTitle.values()[intInput];
+        jobtitle = JobTitle.values()[intInput];
         
         System.out.println("Please select Employeee Department ");
         index = 0;
@@ -135,8 +134,7 @@ public class MainProject {
             intInput = scanner.nextInt();
         }
         
-        department= Department.values()[intInput];
-
+        department = Department.values()[intInput];
         
         Employee employee = null;
         switch(selectedType){
@@ -220,7 +218,7 @@ public class MainProject {
             System.out.println("Invalid ID");
         }
         else{
-            employee.print();
+            System.out.println(employee.toString());
         }
 
         // Wait for user to continue
@@ -242,15 +240,84 @@ public class MainProject {
     }
     
     private static EmployeeRepo employeeRepo = new EmployeeRepo();
-    
+    private static FileUtil fileUtil = new FileUtil("payslips");
+
+    public static void displayPayslipSubmenu(Scanner scanner){
+        
+        System.out.println("Select option list\n" +
+        "A. View a payslip\n" +
+        "B. Generate a payslip\n");
+
+        String input = scanner.nextLine().toUpperCase();
+
+        switch (input) {
+            case "A":
+              
+                employeeRepo.printAllEmployeesTable();
+
+                System.out.println("Select an employee by ID");
+
+                input = scanner.nextLine().toUpperCase();
+
+                if(!fileUtil.readFolder(input)){
+                    return;
+                }
+
+                System.out.println("Select a month by index");
+
+                int index = scanner.nextInt();
+
+                fileUtil.readFile(input,index);
+
+                break;
+            case "B":
+
+                employeeRepo.printAllEmployeesTable();
+
+                System.out.println("Select an employee by ID");
+
+                int id = scanner.nextInt();
+
+                System.out.println("Select a month");
+
+                String month = scanner.next().toUpperCase();
+
+                Employee employee = employeeRepo.get(id);
+
+                if(employee == null){
+                    System.out.println("Please select an valid employee");
+                    return;
+                }
+
+                double paymentAmount;
+                if(employee instanceof WageEarner){
+                    paymentAmount = ((WageEarner)employee).getAnunalSallary()/12;
+                } else if ( employee instanceof CommissionEarner){
+                    System.out.println("Please input sales amount");
+                    paymentAmount = ((CommissionEarner)employee).getCommission() * scanner.nextInt();
+             
+                } else {
+                    System.out.println("Please input number of worked hours");
+                    //TODO de completat, ca sa nu fie chiar mura in gura :)
+                    paymentAmount = 0;
+                }
+
+                fileUtil.write("" + id, month, employeeRepo.get(id).toString() + "\nPayment: " + paymentAmount);
+
+                break;
+            default:
+                return;
+        }
+    }
+
     public static void main(String[] args) {    
         
-        Scanner scaner = new Scanner(System.in);    
+        Scanner scaner = new Scanner(System.in); 
         
         // test data
-        employeeRepo.Add(WageEarner.newWageEarner(21, "title", "firstname1", "lastname1", "dateofbirth", "nino", JobTitle.CEO, Department.MARKETING, 77000,ContractType.FULL_TIME));
-        employeeRepo.Add(Hourly.newHourly(77, "title", "firstname2", "lastname2", "dateofbirth", "nino",  JobTitle.DIRECTOR, Department.PRODUCTION, 42));
-        employeeRepo.Add(CommissionEarner.newCommissionEarner(420, "title", "firstname3", "lastname3", "dateofbirth", "nino",  JobTitle.OFFICE_WORKER, Department.SALES, 0.21,30000));
+        employeeRepo.Add(WageEarner.newWageEarner(21, "title", "Peter", "Griffin", "dateofbirth", "nino", JobTitle.CEO, Department.MARKETING, 77000,ContractType.FULL_TIME));
+        employeeRepo.Add(Hourly.newHourly(77, "title", "Bart", "Simpsons", "dateofbirth", "nino",  JobTitle.DIRECTOR, Department.PRODUCTION, 42));
+        employeeRepo.Add(CommissionEarner.newCommissionEarner(420, "title", "Stan", "Smith", "dateofbirth", "nino",  JobTitle.OFFICE_WORKER, Department.SALES, 0.21,30000));
 
         while(true){//bucla infinita si brake opreste codul.
         
@@ -268,6 +335,9 @@ public class MainProject {
                     break;
                 case "3" : 
                     displayRemoveEmployeeSubMenu(scaner);
+                    break;
+                case "4" : 
+                    displayPayslipSubmenu(scaner);
                     break;
                 case "5":
                     System.exit(0);

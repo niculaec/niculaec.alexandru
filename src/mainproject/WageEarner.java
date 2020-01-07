@@ -20,8 +20,8 @@ public class WageEarner extends Employee
     }
     
     @Override
-    void printExtensionProprieties() {
-        System.out.println("Annual Sallary: " + annualSallary + " Job Type:" + jobType.toString() );
+    String extensionProprietiesToString() {
+        return "Annual Sallary: " + annualSallary + " Job Type:" + jobType.toString();
     }
 
     public static Employee newWageEarner(int Id,String title, String firstname, String lastname, String dateofbirth,String nino,JobTitle jobtitle,Department department, double wage, ContractType jobType) {

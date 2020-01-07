@@ -36,9 +36,11 @@ public abstract class Employee {
     }
 
     public static boolean validateEmployee(int Id,String title, String firstname, String lastname, String dateofbirth,String nino){
+        
         if(title == null || title.isEmpty()){
             return false;//if user left empty the code will be stopt.
         }
+        
         if(firstname == null || firstname.isEmpty()){
             return false;//if user left empty the code will be stopt.
         } else{
@@ -55,12 +57,15 @@ public abstract class Employee {
                 return false;
             }
         }
+        
         if(nino == null || nino.isEmpty()){
             return false;//if user left empty the code will be stopt.
         }
+        
         if(dateofbirth == null || dateofbirth.isEmpty()){
             return false;//if user left empty the code will be stopt.
         }
+        
         if(Id == 0){
             return false;//if user left empty the code will be stopt.
         }
@@ -117,16 +122,16 @@ public abstract class Employee {
         return Department;
     }
     
-    abstract void printExtensionProprieties();
+    abstract String extensionProprietiesToString();
 
-    private void printBaseProprieties(){
+    private String baseProprietiesToString(){
 
         //TODO de completat
-        System.out.println("title: " + Title + "\n" + "First name: " + FirstName  );
+        return "title: " + Title + "\n" + "First name: " + FirstName;
     }
 
-    public final void print(){
-        printBaseProprieties();
-        printExtensionProprieties();
+    public final String toString(){
+        return baseProprietiesToString() +
+        extensionProprietiesToString();
     }
 }

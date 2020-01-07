@@ -14,14 +14,14 @@ public class CommissionEarner extends Employee
         this.annualGrossSalary = annualGrossSalary;
     }
     
-    protected double Commissions()
+    protected double getCommission()
     {
         return commission;
     }
     
     @Override
-    void printExtensionProprieties() {
-        System.out.println("Comission: " + commission  + "Annual Gross Salary: " + annualGrossSalary  );
+    String extensionProprietiesToString() {
+        return "Comission: " + commission  + "Annual Gross Salary: " + annualGrossSalary;
     }
 
 
