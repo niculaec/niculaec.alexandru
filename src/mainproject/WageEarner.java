@@ -3,20 +3,33 @@ package mainproject;
 
 public class WageEarner extends Employee
 {
-   protected double Sallary;
+    protected double annualSallary;
+    protected ContractType jobType;
    
-   private WageEarner(int Id, String title, String firstname, String lastname,String contractType,String dateofbirth,String nino,String Jobtitle,String department,double sallary)
+    private WageEarner(int Id, String title, String firstname, String lastname,String dateofbirth,String nino,JobTitle Jobtitle,Department department,double anualSallary, ContractType jobType)
     {
-        super(Id,title,firstname,lastname,contractType,dateofbirth,nino,Jobtitle,department);
+        super(Id,title,firstname,lastname,dateofbirth,nino,Jobtitle,department);
    
-   Sallary=sallary;
-}
-   protected double Slr()
-    {
-return Sallary;
+        annualSallary=anualSallary;
+        this.jobType=jobType;
     }
-   @Override
-    void printExtensionProprieties() {
-        System.out.println("Sallary: " + Sallary );
+
+    protected double getAnunalSallary()
+    {
+        return annualSallary;
+    }
+    
+    @Override
+    String extensionProprietiesToString() {
+        return "Annual Sallary: " + annualSallary + " Job Type:" + jobType.toString();
+    }
+
+    public static Employee newWageEarner(int Id,String title, String firstname, String lastname, String dateofbirth,String nino,JobTitle jobtitle,Department department, double wage, ContractType jobType) {
+        
+        if(!validateEmployee(Id, title, firstname, lastname, dateofbirth, nino)){
+            return null;
+        }
+        
+        return new WageEarner(Id, title, firstname, lastname, dateofbirth, nino, jobtitle, department, wage, jobType );
     }
 }
